@@ -1,5 +1,6 @@
 package com.lyl.service;
 
+import com.lyl.pojo.Category;
 import com.lyl.pojo.News;
 
 import java.util.List;
@@ -15,4 +16,10 @@ import java.util.List;
 public interface NewsQueryService {
 
 	List<News> queryNews();
+
+	List<News> queryNewsByCondition(News news);
+
+	List<Category> findAllCategory();
+
+	News findNewsById(Integer id);
 }

@@ -1,0 +1,20 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8899
+spring:
+  application:
+    name: service-zuul
+# 网关路由
+zuul:
+  routes:
+    #可以定义多个路径，路径名：api-*
+    api-query:
+      path: /news-query/**
+      service-id: news-query-ms
+
+    api-edit:
+      path: /news-edit/**
+      service-id: news-edit-ms

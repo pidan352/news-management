@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>新闻列表</title>
+</head>
+<body>
+
+<form action="/queryNewsByCondition" method="post">
+    新闻分类：
+    <select name="categoryid">
+        <option value="0">全部</option>
+        <option th:each="category:${categoryList}"
+                th:value="${category.id}"
+                th:text="${category.cname}"
+                th:selected="${newsCondition.categoryid==category.id}"></option>
+    </select>
+    新闻标题：
+    <input type="text" name="title" th:value="${newsCondition.title}">
+    <input type="submit" value="查询">
+</form>
+
+<table border="1px">
+    <tr>
+        <th>新闻编号</th>
+        <th>新闻标题</th>
+        <th>新闻摘要</th>
+        <th width="5%">作者</th>
+        <th>创建时间</th>
+        <th width="5%">操作</th>
+    </tr>
+    <tr th:each="news:${newsList}">
+        <td th:text="${news.id}"></td>
+        <td th:text="${news.title}"></td>
+        <td th:text="${news.summary}"></td>
+        <td th:text="${news.author}"></td>
+        <td th:text="${news.createdate}"></td>
+        <td>修改</td>
+    </tr>
+
+</table>
+
+</body>
+</html>
